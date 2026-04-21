@@ -1,0 +1,79 @@
+{
+  "user": {
+    "firstName": "Thomas",
+    "lastName": "Durand",
+    "partner": "IPECA",
+    "profile": "bilan_recommande"
+  },
+  "profiles": [
+    "bilan_recommande",
+    "rdv_confirme",
+    "post_bilan",
+    "aucune_action"
+  ],
+  "profileLabels": {
+    "bilan_recommande": "Bilan recommandé",
+    "rdv_confirme": "RDV confirmé",
+    "post_bilan": "Post-bilan",
+    "aucune_action": "Aucune action"
+  },
+  "nextAppointment": {
+    "date": "2026-04-23T10:00:00",
+    "optician": "Laura Gabrialdi",
+    "type": "Bilan visuel",
+    "duration": "20 min",
+    "visioLink": "#"
+  },
+  "prescription": {
+    "date": "2026-04-21",
+    "downloadUrl": "#"
+  },
+  "glasses": [
+    { "id": 1, "brand": "Vogue", "model": "VO5421", "price": "0€", "image": null },
+    { "id": 2, "brand": "Ray-Ban", "model": "RB5345", "price": "0€", "image": null },
+    { "id": 3, "brand": "Burberry", "model": "BE2389", "price": "0€", "image": null }
+  ],
+  "preparationTips": [
+    "Pensez à apporter vos lunettes actuelles si vous en portez.",
+    "Notez les gênes ressenties (mal de tête, fatigue, vision floue).",
+    "Prévoyez 20 minutes au calme, dans un environnement lumineux."
+  ],
+  "healthTests": [
+    { "id": "profil", "title": "Profil visuel", "duration": "3 min" },
+    { "id": "dmla", "title": "Test DMLA", "duration": "2 min" },
+    { "id": "contraste", "title": "Sensibilité aux contrastes", "duration": "4 min" }
+  ],
+  "saviezVous": {
+    "bilan_recommande": "Les verres antireflets réduisent la fatigue visuelle devant écran de 30%.",
+    "rdv_confirme": "Votre opticien analysera jusqu'à 12 paramètres visuels lors du bilan.",
+    "post_bilan": "Votre ordonnance C·Evidentia est valide 5 ans (3 ans après 42 ans).",
+    "aucune_action": "Dans 68% des cas, une gêne sur équipement récent vient d'un simple ajustement de monture."
+  },
+  "heroCopy": {
+    "bilan_recommande": {
+      "eyebrow": "Recommandé pour vous",
+      "title": "Votre bilan visuel vous attend",
+      "subtitle": "Vous avez déclaré des gênes devant les écrans. Un bilan de 20 minutes avec un opticien vous est proposé.",
+      "ctaLabel": "Prendre mon rendez-vous",
+      "ctaSecondary": "En savoir plus"
+    },
+    "post_bilan": {
+      "eyebrow": "Ordonnance prête",
+      "title": "Votre ordonnance est disponible",
+      "subtitle": "Choisissez votre monture et finalisez votre commande en quelques clics. Livraison offerte.",
+      "ctaLabel": "Commander mes lunettes",
+      "ctaSecondary": "Télécharger l'ordonnance"
+    },
+    "aucune_action": {
+      "eyebrow": "Tout est en ordre",
+      "title": "Vos yeux semblent aller bien",
+      "subtitle": "Aucune action urgente n'est requise. Nous vous recontacterons automatiquement dans 6 mois.",
+      "ctaLabel": "Voir mes derniers résultats",
+      "ctaSecondary": null
+    }
+  },
+  "equipment": {
+    "lastGlassesYears": 2,
+    "nextCheckupDate": "2026-10-21"
+  }
+}
