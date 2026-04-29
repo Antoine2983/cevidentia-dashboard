@@ -75,5 +75,84 @@
   "equipment": {
     "lastGlassesYears": 2,
     "nextCheckupDate": "2026-10-21"
+  },
+  "cart": { "count": 0 },
+  "favorites": { "count": 2 },
+  "orders": [
+    { "id": "C-2024-0421", "label": "Lunettes Vogue VO5421", "status": "Livrée", "date": "2024-04-12" }
+  ],
+  "highlightServices": {
+    "bilan_recommande": {
+      "sante": {
+        "eyebrow": "Santé visuelle",
+        "headline": "Aucun bilan ces 12 derniers mois",
+        "metricLabel": "Dernier bilan",
+        "metricValue": "Jamais",
+        "ctaLabel": "Démarrer mon bilan",
+        "tag": "Recommandé pour vous"
+      },
+      "catalogue": {
+        "eyebrow": "Catalogue",
+        "headline": "318 montures couvertes par IPECA",
+        "metricLabel": "Reste à charge",
+        "metricValue": "0 €",
+        "ctaLabel": "Découvrir les montures",
+        "tag": "Pris en charge 100%"
+      }
+    },
+    "rdv_confirme": {
+      "sante": {
+        "eyebrow": "Santé visuelle",
+        "headline": "Bilan visuel imminent",
+        "metricLabel": "Avec",
+        "metricValue": "Laura Gabrialdi",
+        "ctaLabel": "Préparer mon bilan",
+        "tag": "Dans moins de 48h"
+      },
+      "catalogue": {
+        "eyebrow": "Catalogue",
+        "headline": "Anticipez votre choix de monture",
+        "metricLabel": "Sélection",
+        "metricValue": "12 favoris filtrés",
+        "ctaLabel": "Parcourir en avance",
+        "tag": "Inspiration"
+      }
+    },
+    "post_bilan": {
+      "sante": {
+        "eyebrow": "Santé visuelle",
+        "headline": "Ordonnance valide 5 ans",
+        "metricLabel": "Délivrée",
+        "metricValue": "Aujourd'hui",
+        "ctaLabel": "Télécharger l'ordonnance",
+        "tag": "Disponible"
+      },
+      "catalogue": {
+        "eyebrow": "Catalogue",
+        "headline": "3 montures compatibles avec votre vue",
+        "metricLabel": "Reste à charge",
+        "metricValue": "0 €",
+        "ctaLabel": "Choisir mes lunettes",
+        "tag": "Sélection sur mesure"
+      }
+    },
+    "aucune_action": {
+      "sante": {
+        "eyebrow": "Santé visuelle",
+        "headline": "Suivi automatique activé",
+        "metricLabel": "Prochain point",
+        "metricValue": "21 oct. 2026",
+        "ctaLabel": "Faire un test rapide",
+        "tag": "En autonomie"
+      },
+      "catalogue": {
+        "eyebrow": "Catalogue",
+        "headline": "Vos lunettes ont 2 ans — du neuf vous attend",
+        "metricLabel": "Renouvellement",
+        "metricValue": "Dans 1 an",
+        "ctaLabel": "Voir les nouveautés",
+        "tag": "Inspiration"
+      }
+    }
   }
 }
