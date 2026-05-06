@@ -127,11 +127,13 @@ function Header({ user, cart, favorites, ordersCount }) {
   return (
     <header className="flex items-center justify-between gap-4 px-2">
       <div className="flex items-center gap-3">
-        <div className="h-9 w-9 rounded-xl bg-brand-500 grid place-items-center text-white font-bold">C</div>
-        <div className="leading-tight">
-          <p className="font-semibold text-ink-900">C·Evidentia</p>
-          <p className="text-[11px] uppercase tracking-wider text-ink-400">Mon espace</p>
-        </div>
+        <img src="/assets/logo-cevidentia.png" alt="C·Evidentia" className="h-7 w-auto" />
+        <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-[11px] font-medium text-ink-500 shadow-sm">
+          <span className="inline-flex h-4 items-center rounded bg-navy-700 px-1.5">
+            <img src="/assets/ipeca.svg" alt="IPECA" className="h-2.5 w-auto invert brightness-0" style={{ filter: 'brightness(0) invert(1)' }} />
+          </span>
+          Partenariat santé
+        </span>
       </div>
 
       <nav className="hidden md:flex items-center gap-1 text-sm text-ink-500">

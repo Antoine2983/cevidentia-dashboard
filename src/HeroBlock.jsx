@@ -48,9 +48,35 @@ function IpecaBadge({ light = false }) {
   );
 }
 
+function CheckIcon({ className = 'text-success' }) {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <path d="m5 12 5 5L20 7" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function TrustChips({ chips, light = false }) {
+  return (
+    <div className="mt-5 flex flex-wrap items-center gap-2">
+      {chips.map((c, i) => (
+        <span
+          key={i}
+          className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[13px] font-medium ${
+            light ? 'bg-white/12 text-white border border-white/15' : 'bg-white text-ink-700 shadow-sm'
+          }`}
+        >
+          <CheckIcon className={light ? 'text-white' : 'text-success'} />
+          {c}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 function BilanRecommande({ copy, user, onPrimary }) {
   return (
-    <div className="relative overflow-hidden rounded-hero p-8 md:p-10 text-white animate-fadeIn"
+    <div className="relative overflow-hidden rounded-outer p-8 md:p-10 text-white animate-fadeIn"
          style={{ background: 'linear-gradient(135deg, #026DFF 0%, #0279FF 50%, #1191FF 100%)' }}>
       <div className="pointer-events-none absolute -right-20 -top-24 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
       <div className="pointer-events-none absolute -left-32 -bottom-32 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
@@ -82,6 +108,10 @@ function BilanRecommande({ copy, user, onPrimary }) {
           <div className="mt-6">
             <IpecaBadge light />
           </div>
+          <TrustChips
+            light
+            chips={['Tiers payant IPECA', 'Sans avance de frais', 'Suivi continu']}
+          />
         </div>
 
         <div className="relative hidden md:flex justify-end">
@@ -121,7 +151,7 @@ function RdvConfirme({ appointment, onVisio }) {
     : '';
 
   return (
-    <div className="relative overflow-hidden rounded-hero p-8 md:p-10 text-white animate-fadeIn"
+    <div className="relative overflow-hidden rounded-outer p-8 md:p-10 text-white animate-fadeIn"
          style={{ background: 'linear-gradient(135deg, #13263D 0%, #103E72 55%, #026DFF 130%)' }}>
       <div className="pointer-events-none absolute -right-24 top-10 h-72 w-72 rounded-full bg-brand-500/30 blur-3xl" />
 
@@ -163,6 +193,10 @@ function RdvConfirme({ appointment, onVisio }) {
             </button>
           </div>
           <div className="mt-6"><IpecaBadge light /></div>
+          <TrustChips
+            light
+            chips={['Visio sécurisée', 'Annulation gratuite', 'Ordonnance immédiate']}
+          />
         </div>
 
         <div className="relative hidden md:block">
@@ -185,7 +219,7 @@ function RdvConfirme({ appointment, onVisio }) {
 
 function PostBilan({ copy, user, onPrimary, onSecondary }) {
   return (
-    <div className="relative overflow-hidden rounded-hero p-8 md:p-10 animate-fadeIn"
+    <div className="relative overflow-hidden rounded-outer p-8 md:p-10 animate-fadeIn"
          style={{ background: 'linear-gradient(135deg, #ECFDF5 0%, #E5F1FF 50%, #FFFFFF 100%)' }}>
       <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-success/20 blur-3xl" />
 
@@ -215,6 +249,7 @@ function PostBilan({ copy, user, onPrimary, onSecondary }) {
             </button>
           </div>
           <div className="mt-6"><IpecaBadge /></div>
+          <TrustChips chips={['Livraison gratuite', 'Reste à charge 0 €', 'Garantie 2 ans']} />
         </div>
 
         <div className="relative">
@@ -243,7 +278,7 @@ function AucuneAction({ copy, nextCheckupDate, onPrimary }) {
     ? new Date(nextCheckupDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
     : '';
   return (
-    <div className="relative overflow-hidden rounded-hero p-8 md:p-10 animate-fadeIn"
+    <div className="relative overflow-hidden rounded-outer p-8 md:p-10 animate-fadeIn"
          style={{ background: 'linear-gradient(135deg, #FFFFFF 0%, #F5F8FD 60%, #E5F1FF 120%)' }}>
       <div className="pointer-events-none absolute -right-24 -top-20 h-72 w-72 rounded-full bg-brand-100/60 blur-3xl" />
 
@@ -270,6 +305,7 @@ function AucuneAction({ copy, nextCheckupDate, onPrimary }) {
               <button className="btn-ghost" onClick={onPrimary}>{copy.ctaLabel}</button>
             </div>
           )}
+          <TrustChips chips={['Suivi automatique', 'Tests en autonomie', 'Renouvellement préparé']} />
         </div>
 
         <div className="relative">

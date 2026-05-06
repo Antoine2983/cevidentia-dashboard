@@ -9,7 +9,8 @@ export default {
       colors: {
         brand: {
           50: '#E5F1FF',
-          100: '#BEDBFF',
+          100: '#D9E5FE',
+          200: '#BEDBFF',
           400: '#1191FF',
           500: '#0279FF',
           600: '#026DFF',
@@ -31,14 +32,20 @@ export default {
         warn: '#F0A152',
         accent: '#FDC700',
       },
+      backgroundImage: {
+        'brand-gradient': 'linear-gradient(70deg, #1191FF 0%, #026DFF 100%)',
+      },
       boxShadow: {
         card: '4px 4px 24px rgba(0,0,0,0.05)',
-        btn: '0px 6px 11.2px rgba(2,121,255,0.4)',
-        soft: '0px 4px 8.9px 1px rgba(9,87,174,0.13)',
+        btn: '0 10px 15px rgba(21,93,252,0.20), 0 4px 6px rgba(21,93,252,0.20)',
+        soft: '0 4px 8.9px 1px rgba(9,87,174,0.13)',
+        modal: '0 20px 31.2px 3px rgba(0,0,0,0.05), 0 8px 10px -1px rgba(0,0,0,0.04)',
       },
       borderRadius: {
-        card: '20px',
-        hero: '28px',
+        card: '24px',
+        hero: '32px',
+        outer: '40px',
+        chip: '21px',
       },
       keyframes: {
         fadeIn: {
