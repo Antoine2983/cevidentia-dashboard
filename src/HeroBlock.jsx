@@ -142,6 +142,136 @@ function BilanRecommande({ copy, user, onPrimary }) {
   );
 }
 
+function RdvAVenir({ appointment, copy, onPrimary, onSecondary }) {
+  const cd = useCountdown(appointment?.date);
+  const dateObj = appointment?.date ? new Date(appointment.date) : null;
+  const dateLong = dateObj
+    ? dateObj.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })
+    : '';
+  const timeLabel = dateObj
+    ? dateObj.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
+    : '';
+  const daysLabel = cd
+    ? cd.days >= 1
+      ? `Dans ${cd.days} jour${cd.days > 1 ? 's' : ''}`
+      : `Dans ${cd.hours}h`
+    : '';
+
+  return (
+    <div
+      className="relative overflow-hidden rounded-outer p-8 md:p-10 animate-fadeIn"
+      style={{ background: 'linear-gradient(135deg, #E5F1FF 0%, #FFFFFF 55%, #D9E5FE 130%)' }}
+    >
+      <div className="pointer-events-none absolute -right-24 -top-20 h-80 w-80 rounded-full bg-brand-100/70 blur-3xl" />
+      <div className="pointer-events-none absolute -left-24 -bottom-24 h-72 w-72 rounded-full bg-brand-50 blur-3xl" />
+
+      <div className="relative grid gap-10 md:grid-cols-[1.15fr_0.85fr] md:items-center">
+        <div>
+          <div className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-[12px] font-semibold uppercase tracking-wider text-brand-500 shadow-sm ring-1 ring-brand-100">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <path d="m5 12 5 5L20 7" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            {copy.eyebrow} · {daysLabel}
+          </div>
+
+          <h1 className="mt-4 text-3xl md:text-[40px] font-bold leading-[1.1] tracking-[-0.02em] text-ink-900">
+            {copy.title}
+          </h1>
+
+          <div className="mt-5 inline-flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl bg-white/70 px-4 py-3 text-ink-900 shadow-sm ring-1 ring-white">
+            <span className="inline-flex items-center gap-2">
+              <span className="grid h-9 w-9 place-items-center rounded-lg bg-brand-50 text-brand-500">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.6" />
+                  <path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                </svg>
+              </span>
+              <span className="font-semibold first-letter:uppercase">{dateLong}</span>
+            </span>
+            <span className="hidden sm:inline-block h-5 w-px bg-ink-300/60" />
+            <span className="inline-flex items-center gap-2">
+              <span className="grid h-9 w-9 place-items-center rounded-lg bg-brand-50 text-brand-500">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
+                  <path d="M12 7v5l3 2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                </svg>
+              </span>
+              <span className="font-semibold tabular-nums">{timeLabel}</span>
+            </span>
+          </div>
+
+          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-ink-500">{copy.subtitle}</p>
+
+          <div className="mt-7 flex flex-wrap items-center gap-3">
+            <button className="btn-primary" onClick={onPrimary}>
+              {copy.ctaLabel}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            <button className="btn-ghost !py-3.5" onClick={onSecondary}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.6" />
+                <path d="M12 10v6M9 13h6M3 9h18M8 3v4M16 3v4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+              </svg>
+              {copy.ctaSecondary}
+            </button>
+            <button className="inline-flex items-center gap-1.5 rounded-lg px-3 py-3 text-sm font-medium text-ink-500 hover:text-ink-700">
+              Modifier
+            </button>
+          </div>
+
+          <div className="mt-6"><IpecaBadge /></div>
+          <TrustChips chips={['Visio sécurisée', 'Annulation jusqu\'à 4h avant', 'Rappel automatique']} />
+        </div>
+
+        <div className="relative">
+          <div className="rounded-3xl bg-white p-5 shadow-card ring-1 ring-ink-300/30">
+            <div className="flex items-center gap-3">
+              <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white text-xl font-semibold">
+                {appointment?.optician?.split(' ').map(w => w[0]).slice(0, 2).join('') || 'LG'}
+              </div>
+              <div className="min-w-0">
+                <p className="text-[12px] uppercase tracking-wider text-ink-400">Votre opticienne</p>
+                <p className="font-semibold text-ink-900 truncate">{appointment?.optician}</p>
+                <div className="mt-0.5 flex items-center gap-1 text-[12px] text-ink-500">
+                  <span className="text-accent">★★★★★</span>
+                  <span>4.9 · 1 240 avis</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-4 h-px bg-ink-300/40" />
+
+            <ul className="mt-4 space-y-2.5 text-sm">
+              <li className="flex items-center justify-between gap-3">
+                <span className="text-ink-500">Format</span>
+                <span className="font-medium text-ink-900">Visio</span>
+              </li>
+              <li className="flex items-center justify-between gap-3">
+                <span className="text-ink-500">Durée</span>
+                <span className="font-medium text-ink-900">{appointment?.duration || '20 min'}</span>
+              </li>
+              <li className="flex items-center justify-between gap-3">
+                <span className="text-ink-500">Type</span>
+                <span className="font-medium text-ink-900">{appointment?.type || 'Bilan visuel'}</span>
+              </li>
+            </ul>
+
+            <button className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg border border-ink-300/60 bg-white px-3 py-2.5 text-sm font-medium text-ink-700 transition hover:border-brand-500 hover:text-brand-500">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z" stroke="currentColor" strokeWidth="1.6" />
+                <circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="1.6" />
+              </svg>
+              Voir son profil
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function RdvConfirme({ appointment, onVisio }) {
   const cd = useCountdown(appointment?.date);
   const dateLabel = appointment?.date
@@ -326,6 +456,9 @@ function AucuneAction({ copy, nextCheckupDate, onPrimary }) {
 export default function HeroBlock({ profile, user, copy, appointment, nextCheckupDate, onPrimary, onSecondary, onVisio }) {
   if (profile === 'rdv_confirme') {
     return <RdvConfirme appointment={appointment} onVisio={onVisio} />;
+  }
+  if (profile === 'rdv_a_venir') {
+    return <RdvAVenir appointment={appointment} copy={copy} onPrimary={onPrimary} onSecondary={onSecondary} />;
   }
   if (profile === 'post_bilan') {
     return <PostBilan copy={copy} user={user} onPrimary={onPrimary} onSecondary={onSecondary} />;

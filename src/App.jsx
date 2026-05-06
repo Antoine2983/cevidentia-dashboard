@@ -4,6 +4,25 @@ import data from './mockData.json';
 
 const DEV_MODE = true;
 
+/**
+ * Selon le profil, l'horizon du RDV change :
+ *  - rdv_confirme  → ~22h plus tard (imminent, < 48h, countdown live)
+ *  - rdv_a_venir   → ~2 jours et 4h plus tard (calme, J-2)
+ *  - autres        → date inchangée (mock)
+ *
+ * Calculé au runtime pour que le proto reste réaliste dans le temps.
+ */
+function appointmentForProfile(profile, base) {
+  const now = Date.now();
+  if (profile === 'rdv_confirme') {
+    return { ...base, date: new Date(now + 22 * 3600 * 1000).toISOString() };
+  }
+  if (profile === 'rdv_a_venir') {
+    return { ...base, date: new Date(now + (2 * 86400 + 4 * 3600) * 1000).toISOString() };
+  }
+  return base;
+}
+
 function ProfileSwitcher({ current, onChange, labels, profiles }) {
   return (
     <div className="sticky top-0 z-40 w-full border-b border-ink-300/40 bg-white/80 backdrop-blur">
@@ -41,7 +60,11 @@ export default function App() {
   const [profile, setProfile] = useState(data.user.profile);
 
   const dataForProfile = useMemo(
-    () => ({ ...data, user: { ...data.user, profile } }),
+    () => ({
+      ...data,
+      user: { ...data.user, profile },
+      nextAppointment: appointmentForProfile(profile, data.nextAppointment),
+    }),
     [profile],
   );
 

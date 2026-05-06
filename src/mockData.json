@@ -7,13 +7,15 @@
   },
   "profiles": [
     "bilan_recommande",
+    "rdv_a_venir",
     "rdv_confirme",
     "post_bilan",
     "aucune_action"
   ],
   "profileLabels": {
     "bilan_recommande": "Bilan recommandé",
-    "rdv_confirme": "RDV confirmé",
+    "rdv_a_venir": "RDV à venir (J-2)",
+    "rdv_confirme": "RDV imminent (<48h)",
     "post_bilan": "Post-bilan",
     "aucune_action": "Aucune action"
   },
@@ -45,6 +47,7 @@
   ],
   "saviezVous": {
     "bilan_recommande": "Les verres antireflets réduisent la fatigue visuelle devant écran de 30%.",
+    "rdv_a_venir": "Prendre 5 minutes pour repérer vos montures préférées avant le bilan accélère le rendez-vous de 30%.",
     "rdv_confirme": "Votre opticien analysera jusqu'à 12 paramètres visuels lors du bilan.",
     "post_bilan": "Votre ordonnance C·Evidentia est valide 5 ans (3 ans après 42 ans).",
     "aucune_action": "Dans 68% des cas, une gêne sur équipement récent vient d'un simple ajustement de monture."
@@ -56,6 +59,13 @@
       "subtitle": "Vous avez déclaré des gênes devant les écrans. Un bilan de 20 minutes avec un opticien vous est proposé.",
       "ctaLabel": "Prendre mon rendez-vous",
       "ctaSecondary": "En savoir plus"
+    },
+    "rdv_a_venir": {
+      "eyebrow": "Bilan confirmé",
+      "title": "Votre bilan visuel est prévu",
+      "subtitle": "Avec Laura Gabrialdi, en visio. Prenez quelques minutes pour préparer votre rendez-vous.",
+      "ctaLabel": "Préparer mon bilan",
+      "ctaSecondary": "Ajouter au calendrier"
     },
     "post_bilan": {
       "eyebrow": "Ordonnance prête",
@@ -98,6 +108,24 @@
         "metricValue": "0 €",
         "ctaLabel": "Découvrir les montures",
         "tag": "Pris en charge 100%"
+      }
+    },
+    "rdv_a_venir": {
+      "sante": {
+        "eyebrow": "Santé visuelle",
+        "headline": "Bilan dans 2 jours",
+        "metricLabel": "Avec",
+        "metricValue": "Laura Gabrialdi",
+        "ctaLabel": "Préparer mon bilan",
+        "tag": "Confirmé"
+      },
+      "catalogue": {
+        "eyebrow": "Catalogue",
+        "headline": "Repérez vos montures avant le bilan",
+        "metricLabel": "Disponibles",
+        "metricValue": "318 modèles",
+        "ctaLabel": "Parcourir le catalogue",
+        "tag": "Inspiration"
       }
     },
     "rdv_confirme": {

@@ -280,12 +280,16 @@ function HighlightCard({ tone, eyebrow, headline, metricLabel, metricValue, ctaL
 }
 
 function HighlightServices({ services, profile, glasses, healthTests }) {
-  // Tone: santé porte le CTA primaire pour bilan_recommande / rdv_confirme,
-  // catalogue porte le CTA primaire pour post_bilan / aucune_action.
-  const santeIsBrand = profile === 'bilan_recommande' || profile === 'rdv_confirme';
+  // Tone: santé porte le CTA primaire pour les états où l'action utilisateur
+  // concerne le bilan (recommandé, à venir, imminent). Le catalogue prend
+  // le primaire dans les états post-bilan / dormant.
+  const santeIsBrand =
+    profile === 'bilan_recommande' ||
+    profile === 'rdv_a_venir' ||
+    profile === 'rdv_confirme';
 
   // Preview content per profile
-  const santePreview = profile === 'rdv_confirme'
+  const santePreview = (profile === 'rdv_confirme' || profile === 'rdv_a_venir')
     ? (
       <ul className="space-y-1.5 text-sm text-white/90">
         <li className="flex items-center gap-2">✓ Vos lunettes actuelles</li>
@@ -315,14 +319,14 @@ function HighlightServices({ services, profile, glasses, healthTests }) {
         )
         : null;
 
-  const cataloguePreview = (profile === 'post_bilan' || profile === 'aucune_action' || profile === 'bilan_recommande')
-    ? <GlassesThumbs glasses={glasses} />
-    : (
+  const cataloguePreview = (profile === 'rdv_confirme')
+    ? (
       <div className="flex items-center gap-3">
         <span className="text-2xl">🕶</span>
         <p className="text-sm text-ink-500">Inspirez-vous avant le bilan — repérez vos favoris.</p>
       </div>
-    );
+    )
+    : <GlassesThumbs glasses={glasses} />;
 
   return (
     <section>
@@ -417,6 +421,23 @@ function modulesFor(profile, data) {
           subtitle: 'Un aperçu avant votre bilan — sans engagement.',
           icon: '👁', tone: 'neutral',
           body: <HealthTestsList tests={data.healthTests} />,
+        },
+      ];
+    case 'rdv_a_venir':
+      return [
+        {
+          key: 'prepare', eyebrow: 'À faire avant le RDV', title: 'Préparez votre bilan',
+          subtitle: 'Ces 3 étapes prennent 5 minutes et rendent le bilan plus efficace.',
+          icon: '📋', tone: 'brand',
+          body: <TipsList tips={data.preparationTips} />,
+          cta: { label: 'Tout cocher', onClick: () => {} },
+        },
+        {
+          key: 'inspiration', eyebrow: 'Inspiration', title: 'Pré-sélectionnez vos montures',
+          subtitle: 'Vous gagnez du temps : votre opticienne pourra valider directement avec vous.',
+          icon: '🕶', tone: 'neutral',
+          body: <GlassesStrip glasses={data.glasses} />,
+          cta: { label: 'Parcourir le catalogue', onClick: () => {} },
         },
       ];
     case 'rdv_confirme':
